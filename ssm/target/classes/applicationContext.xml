@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                        http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+                        http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
+                     
+    <!-- 引入多个配置文件 -->
+    <!-- <import resource="mybatis-config.xml" /> -->
+    
+    <!-- 自动扫描 -->  
+    <!-- spring的扫描：扫描com.howard包下,排除注解@controller -->
+    <context:component-scan base-package="com.howard" >
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>  
+    
+    <!-- 引入配置文件 -->  
+    <bean id="propertyConfigurer"  
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="location" value="classpath:jdbc.properties" />  
+        <!-- 也可以如下方式写 可配置多个文件 -->
+        <!-- <property name="locations">
+             <list>
+                <value>classpath:database.properties</value>classpath代表类路径,如src下面的文件
+             </list>
+         </property> -->
+    </bean>                 
+    
+    <!-- 数据源  使用dbcp-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  
+        destroy-method="close">  
+        <property name="driverClassName" value="${driver}" />  
+        <property name="url" value="${url}" />  
+        <property name="username" value="${username}" />  
+        <property name="password" value="${password}" />  
+        <!-- 初始化连接大小 -->  
+        <property name="initialSize" value="${initialSize}"></property>  
+        <!-- 连接池最大数量 -->  
+        <property name="maxActive" value="${maxActive}"></property>  
+        <!-- 连接池最大空闲 -->  
+        <property name="maxIdle" value="${maxIdle}"></property>  
+        <!-- 连接池最小空闲 -->  
+        <property name="minIdle" value="${minIdle}"></property>  
+        <!-- 获取连接最大等待时间 -->  
+        <property name="maxWait" value="${maxWait}"></property>  
+    </bean>   
+    
+    <!-- sqlSession工厂。spring和mybatis的整合 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<!-- 引用数据源 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 配置mybatis配置文件的路径      若该配置文件没有什么重要代码，可以省去这一句 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<!-- 配置自动扫描mapper文件 -->
+		<property name="mapperLocations" value="classpath:com/howard/mapper/**/*Mapper.xml" />
+	</bean>   
+	
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+    	<!-- dao接口包名 -->
+        <property name="basePackage" value="com.howard.dao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+        <!-- 如果有时想自己实现dao而不直接映射，则可以配置下面这句，在只映射注解了@Repository -->
+        <!-- <property name="annotationClass" value="org.springframework.stereotype.Repository"/> -->
+    </bean>  
+    
+    <!-- 开启 mybatis事务-->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 
+	事务传播行为说明：
+	Propagation.REQUIRED：如果有事务, 那么加入事务, 没有的话新建一个(默认情况下)
+	Propagation.NOT_SUPPORTED：以非事务方式运行，如果当前存在事务，则把当前事务挂起。
+	PROPAGATION_REQUIRES_NEW：创建一个新的事务，如果当前存在事务，则把当前事务挂起。
+	PROPAGATION_SUPPORTS：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。
+	PROPAGATION_NEVER：以非事务方式运行，如果当前存在事务，则抛出异常。
+	PROPAGATION_MANDATORY：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。
+	PROPAGATION_NESTED:如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，
+					 则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。
+	 -->
+	<!-- 
+	事务隔离级别说明：
+	READ_UNCOMMITTED：读取未提交数据(会出现脏读, 不可重复读) 基本不使用
+	READ_COMMITTED：读取已提交数据(会出现不可重复读和幻读)
+	REPEATABLE_READ：可重复读(会出现幻读)
+	SERIALIZABLE：串行化
+	
+	一般不需要设置 使用所用数据库的默认级别
+	mysql默认是：REPEATABLE_READ
+	sql server默认是：READ_COMMITTED
+	
+	脏读 : 一个事务读取到另一事务未提交的更新数据
+	不可重复读 : 在同一事务中, 多次读取同一数据返回的结果有所不同, 换句话说, 
+	后续读取可以读到另一事务已提交的更新数据. 相反, "可重复读"在同一事务中多次
+	读取数据时, 能够保证所读数据一样, 也就是后续读取不能读到另一事务已提交的更新数据
+	幻读 : 一个事务读到另一个事务已提交的insert数据
+	 -->
+	<!-- 切面事务处理 --> 
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="delete*" propagation="REQUIRED" read-only="false" 
+			           rollback-for="java.lang.Exception"/>
+			<tx:method name="insert*" propagation="REQUIRED" read-only="false" 
+			           rollback-for="java.lang.Exception" />
+            <tx:method name="add*" propagation="REQUIRED" read-only="false" 
+                       rollback-for="java.lang.Exception" />
+			<tx:method name="update*" propagation="REQUIRED" read-only="false" 
+			           rollback-for="java.lang.Exception" />
+			<tx:method name="save*" propagation="REQUIRED" read-only="false" 
+			           rollback-for="java.lang.Exception" />
+			<tx:method name="create*" propagation="REQUIRED" read-only="false" 
+			           rollback-for="java.lang.Exception" />
+		</tx:attributes>
+	</tx:advice> 
+	<!-- aop切面配置--> 
+	<aop:config>
+		<aop:pointcut id="pc" expression="execution(* com.howard.service..*(..))" />
+		<aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />
+	</aop:config> 
+	
+	<!-- 开启注解事务 -->
+	<!-- 
+	<tx:annotation-driven transaction-manager="defaultTransactionManager" proxy-target-class="true" />
+	-->    
+</beans>
