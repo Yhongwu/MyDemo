@@ -1,0 +1,11 @@
+algorithm 算法学习过程记录
+--array 数组
+--binarytree 二叉树
+--common 通用 未分类
+--iq iq智力题趣味题
+--linkedlist 链表
+--queue 队列
+--sort 排序
+--stack 堆与栈
+--string 字符串相关
+--test 随手测试
