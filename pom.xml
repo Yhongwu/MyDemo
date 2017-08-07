@@ -10,6 +10,8 @@
   	<module>ssm</module>
   	<module>javautil</module>
   	<module>javademo</module>
+  	<module>quartz</module>
+  	<module>shiroweb</module>
   </modules>
   
   	<build>

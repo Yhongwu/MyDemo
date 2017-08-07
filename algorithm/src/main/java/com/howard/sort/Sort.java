@@ -132,9 +132,11 @@ public class Sort {
 					k = j;
 				}
 			}
-			temp = nums[k];
-			nums[k] = nums[i];
-			nums[i] = temp;
+			if (k != i) {
+				temp = nums[k];
+				nums[k] = nums[i];
+				nums[i] = temp;
+			}
 		}
 			
 	}

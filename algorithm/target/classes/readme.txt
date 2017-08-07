@@ -1,4 +1,5 @@
 algorithm 算法学习过程记录
+--analysis.ansj ansj中文分词器 需引入ansj依赖
 --array 数组
 --binarytree 二叉树
 --common 通用 未分类

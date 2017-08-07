@@ -14,5 +14,11 @@
 		    <artifactId>Access_JDBC30</artifactId>
 		    <version>1.0.0</version>
 		</dependency>
+		<!-- fastdfs的包   maven仓库不提供 自己下载 fastdfs_client安装到本地-->
+		<dependency>
+		    <groupId>fastdfs_client</groupId>
+		    <artifactId>fastdfs_client</artifactId>
+		    <version>1.2.0</version>
+		</dependency>
 	</dependencies>
 </project>

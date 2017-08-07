@@ -29,7 +29,7 @@
 	<!--  <mvc:default-servlet-handler /> -->
 	
 	<mvc:annotation-driven /> 
-	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" />               
+	<mvc:resources mapping="static/**" location="/static/" />               
 	 
     <!-- 自动扫描该包，只扫描@Controller注解的类 --> 
     <!-- spring配置中的use-default-filters用来指示是否自动扫描带有@Component、

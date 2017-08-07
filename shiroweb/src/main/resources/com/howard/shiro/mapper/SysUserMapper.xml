@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.howard.shiro.mapper.SysUserMapper">
+	
+	<resultMap id="BaseResultMap" type="com.howard.shiro.vo.SysUser" >
+		<!-- 主键 -->
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="username" property="username" jdbcType="VARCHAR" />
+	    <result column="password" property="password" jdbcType="VARCHAR" />
+		 <!--<result column="deleted" property="deleted" jdbcType="BIT" /> -->
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		<![CDATA[
+			`id`,`username`,`password`
+		]]>
+	</sql>
+	
+	
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<!-- xxx 为java对象属性,必须有setter方法, 指定useGeneratedKeys和keyProperty后，自动增长的字段值会自动赋值给此对象 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			INSERT INTO `sysuser` (
+				`username`,
+				`password`
+			) VALUES (
+				#{username, jdbcType=VARCHAR} ,
+				#{password, jdbcType=VARCHAR} ,
+		    )
+	    ]]>
+	</insert>
+	
+	<select id="getByUsername" resultMap="BaseResultMap">
+	    SELECT *
+	    FROM `sysuser`
+	    where username = #{username}
+		<!--  <include refid="findWhere" />  -->
+		<!-- <include refid="findWhereUseClass" />  -->
+		<!-- where username = #{user.username} -->
+  	</select>
+</mapper>

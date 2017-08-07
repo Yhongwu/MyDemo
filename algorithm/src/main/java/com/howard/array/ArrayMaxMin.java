@@ -9,10 +9,16 @@ public class ArrayMaxMin {
 	static int Max;
 	static int Min;
 	public static void GetMaxAndMin(int arr[]) {
+		if (arr.length <= 0 ) {
+			Max = Integer.MAX_VALUE;
+			Min = Integer.MIN_VALUE;
+			return;
+		}
 		Max = arr[0];
 		Min = arr[0];
+		int i = 1;
 		int len = arr.length;
-		for (int i = 1; i < len - 1; i += 2) {
+		for (;i < len - 1; i += 2) {
 				if (i + 1 > len) {
 					if (arr[i] > Max) 
 						Max = arr[i];
@@ -29,6 +35,13 @@ public class ArrayMaxMin {
 					if (arr[i] < Min)
 						Min = arr[i];
 				}
+		}
+		//判断最后是否还有多余一个数未比较
+		if (i + 1 == len) {
+			if (arr[i] > Max) 
+				Max = arr[i];
+			if (arr[i] < Min) 
+				Min = arr[i];
 		}
 	}
 	public static void main(String[] args) {
