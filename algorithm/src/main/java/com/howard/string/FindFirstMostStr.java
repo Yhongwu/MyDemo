@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 /**
  * 求字符串里第一个出现次数最少的字符
+ * cvte面试题
+ * 思路：使用hashmap
  * 2017年8月3日
  * @author hongwu
  */
@@ -33,7 +35,7 @@ public class FindFirstMostStr {
 		System.out.println(minStr);
 	}
 	public static void main(String[] args) {
-		String str = "2341245362341";
+		String str = "23412475362341";
 		getResult(str);
 	}
 }

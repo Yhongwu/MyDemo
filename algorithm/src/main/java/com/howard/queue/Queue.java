@@ -1,6 +1,7 @@
 package com.howard.queue;
 
 import java.util.LinkedList;
+import java.util.concurrent.ArrayBlockingQueue;
 /**
  * 队列
  * 数组实现
@@ -53,6 +54,8 @@ public class Queue<E> {
 		queue.put(3);
 		queue.put(4);
 		queue.put(5);
+		
+		
 		System.out.println("队列长度："+queue.size());
 		System.out.println("队列第一个元素："+queue.pop());
 		System.out.println("队列第一个元素："+queue.pop());

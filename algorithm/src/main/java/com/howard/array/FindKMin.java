@@ -1,6 +1,7 @@
 package com.howard.array;
 /**
  * 找出数组中第k个最小的数
+ * cvte面试题
  * @author Howard
  * 2017年4月8日
  */

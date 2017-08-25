@@ -7,7 +7,7 @@
   </parent>
   <artifactId>quartz</artifactId>
   <packaging>war</packaging>
-  
+  	<!-- 定时任务调度框架quartz -->
 	<dependencies>
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>

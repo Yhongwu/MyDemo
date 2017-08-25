@@ -12,6 +12,7 @@
   	<module>javademo</module>
   	<module>quartz</module>
   	<module>shiroweb</module>
+  	<module>httpclient</module>
   </modules>
   
   	<build>

@@ -15,7 +15,7 @@ public class CompareString {
 	 * 先对字符串的字符进行排序
 	 * 然后直接比较两字符串是否相等
 	 * 时间复杂度主要看排序的时间复杂度，由于排序最快时间复杂度为O(nlogn)
-	 * 所以该算法时间复杂度为O(nlongn)
+	 * 所以该算法时间复杂度为O(nlogn)
 	 * @param str1
 	 * @param str2
 	 * @return

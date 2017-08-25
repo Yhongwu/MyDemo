@@ -3,15 +3,21 @@ package com.howard.common;
  * 求1-n的素数
  * 1既不是素数，也不是合数
  * 素数：除了1和它本身以外不再有其他因数
+ * cvte面试题
  * @author hongwu
  */
 public class PrimeNumber {
-	public static void getPrime1(int end) {
-		//1既不是素数，也不是合数
+	public static void getPrime(int end) {
 		boolean flag = true;
 		int count = 0;
-		for (int i = 2 ; i <= end; i ++) {
-			for (int j = 2 ; j < i; j ++ ) {
+		if (end >= 2) {
+			System.out.printf("%4d",2);
+			count++;
+		}
+		//1既不是素数，也不是合数
+		//偶数除了2之外都不是素数
+		for (int i = 3 ; i <= end; i += 2) {
+			for (int j = 3 ; j <= Math.sqrt(i); j ++ ) {
 				if (i % j == 0 ) {
 					flag = false;
 					break;
@@ -27,11 +33,9 @@ public class PrimeNumber {
 			}
 			flag = true;
 		}
-	}
-	public static void getPrime2(int end) {
-		
+		System.out.println("\n 总数："+count);
 	}
 	public static void main(String[] args) {
-		getPrime1(1000);
+		getPrime(1000);
 	}
 }
