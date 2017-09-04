@@ -1,4 +1,4 @@
-package com.howard.algorithm.test;
+package com.howard.algorithm;
 
 import java.util.Scanner;
 /**
