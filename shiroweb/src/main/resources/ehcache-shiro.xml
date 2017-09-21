@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <ehcache updateCheck="false" name="shiroCache">
+     <!-- 设置了缓存后 当需要权限认证时 只发起一次sql语句 之后会将权限缓存 -->
+     <!-- 貌似必须设置缓存路径 但是如果路径不存在  貌似会自动新建路径 -->
+     <diskStore path="/logs" />
+    <!-- maxElementsInMemory="10000"  最大缓存数量     -->
+        <defaultCache
+
+                maxElementsInMemory="10000"
+                eternal="true"
+                timeToIdleSeconds="120"
+                timeToLiveSeconds="120"
+                overflowToDisk="true"
+                diskPersistent="false"
+                diskExpiryThreadIntervalSeconds="120"
+                clearOnFlush="false"
+                />
+    </ehcache>

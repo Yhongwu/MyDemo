@@ -13,10 +13,10 @@ public class Sort {
 	public static void main(String[] args) {
 		int[] nums = {23,45,67,12,97,4,32,55};
 //		bubbleSort(nums);
-//		quickSort(nums);
+		quickSort(nums);
 //		insertSort(nums);
 //		shellSort(nums);
-		selectSort(nums);
+//		selectSort(nums);
 //		heapSort(nums);
 //		mergeSort(nums, 0, nums.length-1);
 //		radixSort(nums);
@@ -43,6 +43,7 @@ public class Sort {
 		
 	}
 	/**
+	 * 快速排序 分治法
 	 * 以下三个方法用于快速排序
 	 * @param nums
 	 */
@@ -61,11 +62,11 @@ public class Sort {
 	public static int getMiddle(int[] nums,int low,int high){
 		int tmp = nums[low];
 		while(low < high){
-			if (nums[high] >= tmp && low < high) {
+			while (nums[high] >= tmp && low < high) {
 				high--;
 			}
 			nums[low] = nums[high];
-			if (nums[low] <= tmp && low < high) {
+			while (nums[low] <= tmp && low < high) {
 				low++;
 			}
 			nums[high] = nums[low];
@@ -78,7 +79,7 @@ public class Sort {
 	 * @param nums
 	 */
 	public static void insertSort(int[] nums){
-		for(int i = 1;i<nums.length;i++){
+		for(int i = 1;i < nums.length;i++){
 			int tmp = nums[i];
 			int j = i - 1;
 			for(;j >= 0 && tmp < nums[j];j--){
@@ -95,11 +96,11 @@ public class Sort {
 		int d = nums.length;
 		while(d > 1){
 			d = (d+1)/2;
-			for(int z = 0;z < d;z++){
+			for(int z = 0; z < d; z++){
 				for(int i = z + d;i < nums.length; i+=d ){
 					int tmp = nums[i];
-					int j = i -d;
-					for(; j >= 0 && tmp < nums[j];j-=d){
+					int j = i - d;
+					for(; j >= 0 && tmp < nums[j]; j-=d){
 						nums[j+d] = nums[j];
 					}
 					nums[j+d] = tmp;

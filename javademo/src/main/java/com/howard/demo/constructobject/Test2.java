@@ -2,6 +2,7 @@ package com.howard.demo.constructobject;
 /**
  * 不通过new方式创建对象 方法2：
  * 通过反射机制创建对象
+ * 调用了构造方法
  * 2017年8月29日
  * @author hongwu
  */

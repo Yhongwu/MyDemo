@@ -8,7 +8,8 @@ import java.io.Serializable;
 
 /**
  * 不通过new方式创建对象 方法3：
- * 通过反序列化方式,;创建对象
+ * 通过反序列化方式创建对象
+ * 不调用构造方法
  * 2017年8月29日
  * @author hongwu
  */
@@ -56,6 +57,5 @@ public class Test3 implements Serializable{
 		}
 		
 	}
-	
 
 }

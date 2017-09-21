@@ -5,7 +5,7 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 
 public class TestPwd {
 	public static void main(String[] args) {
-		String algorithmName = "SHA-256";  
+		String algorithmName = "md5";  
 		String username = "admin";  
 		String password = "123456";  
 		String salt1 = username;  
