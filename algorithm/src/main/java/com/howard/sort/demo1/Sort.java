@@ -1,4 +1,4 @@
-package com.howard.sort;
+package com.howard.sort.demo1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,8 @@ public class Sort {
 	public static void main(String[] args) {
 		int[] nums = {23,45,67,12,97,4,32,55};
 //		bubbleSort(nums);
-		quickSort(nums);
-//		insertSort(nums);
+//		quickSort(nums);
+		insertSort(nums);
 //		shellSort(nums);
 //		selectSort(nums);
 //		heapSort(nums);
@@ -83,7 +83,7 @@ public class Sort {
 			int tmp = nums[i];
 			int j = i - 1;
 			for(;j >= 0 && tmp < nums[j];j--){
-				nums[j+1] = nums[j];
+				nums[j+1] = nums[j]; //不满足 则后面的逐渐往前移位
 			}
 			nums[j+1] = tmp;
 		}

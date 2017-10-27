@@ -1,4 +1,5 @@
 algorithm 算法学习过程记录
+--algorithm 算法
 --analysis.ansj ansj中文分词器 需引入ansj依赖
 --array 数组
 --binarytree 二叉树
@@ -6,6 +7,7 @@ algorithm 算法学习过程记录
 --iq iq智力题趣味题
 --linkedlist 链表
 --queue 队列
+--search 查找
 --sort 排序
 --stack 堆与栈
 --string 字符串相关
