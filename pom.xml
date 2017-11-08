@@ -13,6 +13,7 @@
   	<module>quartz</module>
   	<module>shiroweb</module>
   	<module>httpclient</module>
+  	<module>serverpush</module>
   </modules>
   
   	<build>

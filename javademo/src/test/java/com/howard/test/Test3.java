@@ -16,7 +16,7 @@ public class Test3 {
 //		System.out.println(s.equals(null)); //抛异常
 //		System.out.println("abc".trim()=="abc"); //true
 //		System.out.println("  abc  ".trim()=="abc");  //false
-		
+		List<String> list = new ArrayList<>();
 		System.out.println(s1+s2+s3);
 		System.out.println(s2+s3+s1);
 	}

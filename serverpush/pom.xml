@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.howard</groupId>
+    <artifactId>mydemo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>serverpush</artifactId>
+  <packaging>war</packaging>
+    	<properties>  
+		<!-- spring版本号 -->  
+		<spring.version>4.0.2.RELEASE</spring.version>  
+		<!-- mybatis版本号 -->  
+		<mybatis.version>3.2.6</mybatis.version>  
+		<!-- log4j日志文件管理包版本 -->  
+		<slf4j.version>1.7.7</slf4j.version>  
+		<log4j.version>1.2.17</log4j.version>  
+		<!-- jdk版本 -->
+		<java.version>1.8</java.version>
+		<shiro.version>1.3.2</shiro.version>
+		<jettyVersion>9.4.6.v20170531</jettyVersion>
+	</properties> 
+  <dependencies>
+  		<!-- 导入java ee jar 包 -->  
+		<dependency>  
+		    <groupId>javax</groupId>  
+		    <artifactId>javaee-api</artifactId>  
+		    <version>7.0</version>  
+		</dependency>  
+		<dependency>  
+            <groupId>org.codehaus.jackson</groupId>  
+            <artifactId>jackson-mapper-asl</artifactId>  
+            <version>1.9.13</version>  
+        </dependency>  
+        <!-- dwr -->
+		<dependency>
+		    <groupId>org.directwebremoting</groupId>
+		    <artifactId>dwr</artifactId>
+		    <version>3.0.2-RELEASE</version>
+		</dependency>
+		<!-- SLF4J -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		<!-- <dependency>
+	      <groupId>org.eclipse.jetty</groupId>
+	      <artifactId>jetty-server</artifactId>
+	      <version>${jettyVersion}</version>
+	    </dependency> -->
+	    <!-- <dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-servlets</artifactId>
+		    <version>9.4.7.v20170914</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-continuation</artifactId>
+		    <version>9.4.7.v20170914</version>
+		</dependency> -->
+		
+  </dependencies>
+  <build>
+		<plugins>
+			<!-- Compile -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<!-- Default Support is java 1.5 -->
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+			<!-- jetty插件 -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.14.v20131031</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<stopPort>9999</stopPort>
+					<webAppConfig>
+						<contextPath>/serverpush</contextPath>
+					</webAppConfig>
+					<!-- 每3秒的间隔扫描一次,实现热部署 -->
+					<scanIntervalSeconds>3</scanIntervalSeconds>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8080</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
