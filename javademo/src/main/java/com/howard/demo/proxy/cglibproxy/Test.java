@@ -1,6 +1,7 @@
 package com.howard.demo.proxy.cglibproxy;
 
-import com.howard.test.proxy.UserServiceImpl;
+
+import com.howard.demo.proxy.UserServiceImpl;
 
 public class Test {
 	public static void main(String[] args) {
