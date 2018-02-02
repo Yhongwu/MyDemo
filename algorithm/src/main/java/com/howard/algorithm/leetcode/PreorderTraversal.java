@@ -47,8 +47,5 @@ public class PreorderTraversal {
         for (Integer i : list) {
             System.out.println(i);
         }
-
     }
-
-
 }
