@@ -1,4 +1,7 @@
 package com.howard.string;
+
+import java.util.Scanner;
+
 /**
  * 字符串单词反转
  * 如how are you 反转后 you are how
@@ -41,8 +44,12 @@ public class ReverseWord {
 		return new String(c);
 	}
 	public static void main(String[] args) {
-		String s = "how are you";
-		System.out.println(reverseWord(s));
-		
+		//String s = "how are you";
+		Scanner scanner = new Scanner(System.in);
+		//字符串带空格输入 nextLine
+		String str = scanner.nextLine();
+		System.out.println(reverseWord(str));
+
+
 	}
 }

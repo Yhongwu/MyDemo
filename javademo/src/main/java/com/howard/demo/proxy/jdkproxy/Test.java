@@ -1,7 +1,8 @@
 package com.howard.demo.proxy.jdkproxy;
 
-import com.howard.test.proxy.UserService;
-import com.howard.test.proxy.UserServiceImpl;
+
+import com.howard.demo.proxy.UserService;
+import com.howard.demo.proxy.UserServiceImpl;
 
 public class Test {
 	public static void main(String[] args) {

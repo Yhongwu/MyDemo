@@ -28,6 +28,7 @@ public class Sort {
 	}
 	/**
 	 * 冒泡排序(升序)
+	 * 稳定
 	 * @param nums
 	 */
 	public static void bubbleSort(int[] nums){
@@ -45,6 +46,7 @@ public class Sort {
 	/**
 	 * 快速排序 分治法
 	 * 以下三个方法用于快速排序
+	 * 不稳定
 	 * @param nums
 	 */
 	public static void quickSort(int[] nums){
@@ -75,7 +77,8 @@ public class Sort {
 		return low;
 	}
 	/**
-	 * 直接插入排序
+	 * 直接插入排序(升序)
+	 * 稳定
 	 * @param nums
 	 */
 	public static void insertSort(int[] nums){
@@ -90,6 +93,7 @@ public class Sort {
 	}
 	/**
 	 * 希尔排序
+	 * 不稳定
 	 * @param nums
 	 */
 	public static void shellSort(int[] nums){
@@ -110,6 +114,7 @@ public class Sort {
 	}
 	/**
 	 * 选择排序(升序)
+	 * 不稳定
 	 * @param nums
 	 */
 	public static void selectSort(int[] nums){
@@ -143,6 +148,7 @@ public class Sort {
 	}
 	/**
 	 * 堆排序(升序)
+	 * 不稳定
 	 * 下面三个方法
 	 * @param nums
 	 */
@@ -190,6 +196,7 @@ public class Sort {
 	}
 	/**
 	 * 归并排序(升序)
+	 * 稳定
 	 * @param nums 数组
 	 * @param low 
 	 * @param high

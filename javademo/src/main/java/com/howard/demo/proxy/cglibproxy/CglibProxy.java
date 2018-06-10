@@ -1,16 +1,18 @@
 package com.howard.demo.proxy.cglibproxy;
 
-import java.lang.reflect.Method;
-
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
+
+import java.lang.reflect.Method;
+
+
 /**
  * cglib动态代理
  * @author yaohongwu
  *
  */
-public class CglibProxy implements MethodInterceptor{
+public class CglibProxy implements MethodInterceptor {
 	
 	private Object target;
 	

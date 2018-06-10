@@ -24,18 +24,18 @@ public class MaxSubStringWith0Or1 {
         int tmp = 1;
         for (int i = 1 ; i < s.length(); i ++ ) {
         	if (s.substring(i, i+1).equals(s.substring(i-1,i))) {
-        		if (max < tmp) {
-        			max = tmp;
-        		}
-        		tmp = 1;
-        	}else {
-        		tmp ++ ;
-        		if (i == (s.length() - 1)) {
-        			if (max < tmp) {
-            			max = tmp;
-            		}
-        		}
-        	}
+				if (max < tmp) {
+					max = tmp;
+				}
+				tmp = 1;
+			}else {
+				tmp ++ ;
+				if (i == (s.length() - 1)) {
+					if (max < tmp) {
+						max = tmp;
+					}
+				}
+			}
         }
         System.out.println(max);
     }

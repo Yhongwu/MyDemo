@@ -35,7 +35,49 @@ public class PrimeNumber {
 		}
 		System.out.println("\n 总数："+count);
 	}
+
+	/**
+	 * 筛选法求素数
+	 * @param end
+	 */
+	public static void getPrimeII(int end) {
+		//先假定所有数是素数 下标表示数
+		//true表示为素数
+		boolean[] a = new boolean[end+1];
+		for (int i = 0 ; i < a.length; i ++ ) {
+			a[i] = true;
+		}
+		// 0 1不是素数 2是最小的素数
+		//素数的倍数都不是素数
+		//2是素数 那么2的倍数都不是素数  3是素数 3的倍数也不是素数
+		a[0] = a[1] = false;
+		for (int i = 2 ; i * i <= end; i ++) {   //Math.sqrt(end)
+			if (a[i]) {
+				for (int j = i + i ; j <= end; j += i ) {
+					a[j] = false;
+				}
+			}
+		}
+
+		//格式化输出
+		int k = 0;
+		for (int i = 2 ; i < a.length; i ++ ) {
+			if (a[i] ) {
+				if (k != 0 && k % 10 ==0) {
+					System.out.println();
+				}
+				k ++;
+				System.out.printf("%4d",i);
+
+			}
+		}
+		System.out.println();
+		System.out.println("count:"+k);
+	}
+
 	public static void main(String[] args) {
 		getPrime(1000);
+		System.out.println("----------------------------------");
+		getPrimeII(1000);
 	}
 }
