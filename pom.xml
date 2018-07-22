@@ -17,6 +17,7 @@
         <module>serverpush</module>
         <module>springmvc</module>
         <module>java8</module>
+        <module>rabbitmq</module>
     </modules>
 
     <build>
