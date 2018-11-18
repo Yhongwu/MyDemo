@@ -1,0 +1,5 @@
+order 订单数据表
+id pid amount
+
+pd 商品信息表
+id name
