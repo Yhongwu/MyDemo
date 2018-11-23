@@ -19,6 +19,7 @@
         <module>java8</module>
         <module>rabbitmq</module>
         <module>zookeeper</module>
+        <module>hadoop</module>
     </modules>
 
     <build>
