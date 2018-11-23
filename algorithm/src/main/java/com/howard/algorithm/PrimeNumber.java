@@ -78,6 +78,6 @@ public class PrimeNumber {
     public static void main(String[] args) {
         getPrime(100);
         getPrimeII(100);
-        getPrimeIII(100);
+        //getPrimeIII(100);
     }
 }
