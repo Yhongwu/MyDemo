@@ -29,24 +29,27 @@ public class Sort {
 	/**
 	 * 冒泡排序(升序)
 	 * 稳定
+	 * 平均     最坏    最好   空间
+	 * O(n^2)  O(n^2)  O(n)  O(1)
 	 * @param nums
 	 */
 	public static void bubbleSort(int[] nums){
 		
-		for(int i = 0;i<nums.length;i++)
-			for(int j = 0;j<nums.length-i-1;j++){
-				if(nums[j]>nums[j+1]){
+		for(int i = 0; i < nums.length;i++)
+			for(int j = 0; j < nums.length-i-1;j++) {
+				if(nums[j] > nums[j+1]) {
 					int tmp = nums[j];
 					nums[j] = nums[j+1];
 					nums[j+1] = tmp;
 				}
 			}
-		
 	}
 	/**
 	 * 快速排序 分治法
 	 * 以下三个方法用于快速排序
 	 * 不稳定
+	 * 平均      最坏     最好    空间
+	 * O(nlogn)  O(n^2)  O(nlogn)  O(logn)
 	 * @param nums
 	 */
 	public static void quickSort(int[] nums){
@@ -79,6 +82,8 @@ public class Sort {
 	/**
 	 * 直接插入排序(升序)
 	 * 稳定
+	 * 平均     最坏    最好   空间
+	 * O(n^2)  O(n^2)  O(n)   O(n)
 	 * @param nums
 	 */
 	public static void insertSort(int[] nums){
@@ -94,6 +99,8 @@ public class Sort {
 	/**
 	 * 希尔排序
 	 * 不稳定
+	 * 平均     最坏    最好   空间
+	 * O(n^1.3)              O(1)
 	 * @param nums
 	 */
 	public static void shellSort(int[] nums){
@@ -114,7 +121,10 @@ public class Sort {
 	}
 	/**
 	 * 选择排序(升序)
-	 * 不稳定
+	 * 不稳定（本身是稳定的 用顺序结构不稳定，链表稳定？）
+	 * 平均     最坏    最好    空间
+	 * O(n^2)  O(n^2)  O(n^2)  O(1)
+	 * 与初始顺序无关
 	 * @param nums
 	 */
 	public static void selectSort(int[] nums){
@@ -133,7 +143,7 @@ public class Sort {
 		int temp = 0;
 		for(int i = 0;i < nums.length;i++){
 			k = i;
-			for(int j = i+1; j < nums.length;j++){
+			for(int j = i + 1; j < nums.length;j++){
 				if(nums[k] > nums[j]){
 					k = j;
 				}
@@ -149,6 +159,9 @@ public class Sort {
 	/**
 	 * 堆排序(升序)
 	 * 不稳定
+	 * 平均         最坏      最好     空间
+	 * O(nlogn)  O(nlogn)  O(nlogn)  O(1)
+	 * 与初始顺序无关
 	 * 下面三个方法
 	 * @param nums
 	 */
@@ -197,6 +210,9 @@ public class Sort {
 	/**
 	 * 归并排序(升序)
 	 * 稳定
+	 * 平均      最坏      最好      空间
+	 * O(nlogn) O(nlogn) O(nlogn)  O(n)
+	 * 与初始顺序无关
 	 * @param nums 数组
 	 * @param low 
 	 * @param high
@@ -236,6 +252,10 @@ public class Sort {
 	}
 	/**
 	 * 基数排序
+	 * 稳定
+	 * 平均        最坏       最好        空间
+	 * O(d(n+r)) O(d(n+r))  O(d(n+r))   O(r)
+	 * 与初始顺序无关
 	 * @param nums
 	 */
 	public static void radixSort(int[] nums){

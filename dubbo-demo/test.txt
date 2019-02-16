@@ -1,0 +1,23 @@
+dubbo:http://dubbo.apache.org/zh-cn/docs
+
+测试1：
+启动user-service-provider提供服务
+启动order-service-consumer来调用远程服务 查看控制台
+
+测试2：springboot整合dubbo
+user-service-provider-boot
+order-service-consumer-boot
+service-api
+
+启动user-service-provider-boot
+启动order-service-consumer-boot
+观察http://localhost:7001 管理台
+浏览器http://localhost:8080/initOrder?useId=1测试
+监控中心：http://localhost:8085/statistics.html可以看到调用次数 成功和失败次数
+
+测试3：配置优先级
+虚拟机参数> dubbo.xml > dubbo.properties
+使用springboot下，application.properties相当于dubbo.xml
+在application.properties和dubbo.properties 分别加：dubbo.protocol.port配置 端口分布20881 20882
+启动参数jvm option添加-Ddubbo.protocol.port=20880
+启动user-service-provider-boot2 查看控制台http://localhost:7001端口

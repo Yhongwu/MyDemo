@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--hdfs oev -p XML -i edits_0000000000000000003-0000000000000000044  -o ./edit_.xml -->
+<EDITS>
+    <EDITS_VERSION>-63</EDITS_VERSION>
+    <RECORD>
+        <OPCODE>OP_START_LOG_SEGMENT</OPCODE>
+        <DATA>
+            <TXID>102</TXID>
+        </DATA>
+    </RECORD>
+    <RECORD>
+        <OPCODE>OP_END_LOG_SEGMENT</OPCODE>
+        <DATA>
+            <TXID>103</TXID>
+        </DATA>
+    </RECORD>
+</EDITS>

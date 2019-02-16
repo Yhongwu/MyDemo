@@ -20,8 +20,7 @@ public class Test2 {
             for(File temp : f.listFiles()) {
                 _walkDirectory(temp, level + 1);
             }
-        }
-        else {
+        } else {
             for(int i = 0; i < level - 1; i++) {
                 System.out.print("\t");
             }

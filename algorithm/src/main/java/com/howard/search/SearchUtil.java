@@ -24,12 +24,10 @@ public class SearchUtil {
 	          int mid = (low + high) >>> 1;
 	          int cmp = comp.compare(x[mid], key);
 	          if (cmp < 0) {
-	            low= mid + 1;
-	          }
-	          else if (cmp > 0) {
-	            high= mid - 1;
-	          }
-	          else {
+	            low = mid + 1;
+	          }else if (cmp > 0) {
+	            high = mid - 1;
+	          }else {
 	            return mid;
 	          }
 	      }
