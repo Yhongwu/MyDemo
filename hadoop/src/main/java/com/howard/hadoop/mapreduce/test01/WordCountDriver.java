@@ -28,7 +28,7 @@ public class WordCountDriver {
        // conf.set("mapreduce.framework.name", "yarn");
         //conf.set("yarn.resourcemanager.hostname", "192.168.1.114");
         System. setProperty ( "HADOOP_USER_NAME" , "yhw" );
-        conf .set( "fs.defaultFS" , "hdfs://192.168.1.114:8020" );
+        conf.set( "fs.defaultFS" , "hdfs://192.168.1.114:8020" );
         Job job = Job.getInstance(conf);
 
         // 设置加载jar位置
